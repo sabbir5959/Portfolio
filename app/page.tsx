@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Globe from "@/components/globeMain";
-import { FloatingNavDemo } from "@/components/navbar";
+// import { FloatingNavDemo } from "@/components/navbar";
 import ResizableNavDemo from "@/components/resizableNav";
 import About from "@/components/navbar/about";
 import Projects from "@/components/navbar/projects";

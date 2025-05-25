@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect, JSX } from "react"
+import React, { useState, useRef, useEffect, JSX, } from "react"
 import { motion, useScroll, useInView, useSpring } from "framer-motion"
 import {
   Mail,
@@ -292,7 +292,7 @@ function ContactInfo() {
 interface ContactInfo {
   icon: JSX.Element;
   label: string;
-  value: string;
+  value: string | JSX.Element;
   color: string;
 }
 
@@ -720,49 +720,53 @@ function SocialLink({ social, index, isInView }: SocialLinkProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <motion.a
-      href={social.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-      animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-      transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
-      className="w-14 h-14 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-blue-400 hover:text-white transition-all duration-300 relative overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      whileHover={{
-        scale: 1.15,
-        rotate: [0, -10, 10, 0],
-        transition: { duration: 0.5 },
-      }}
-      animate={{
-        backgroundColor: isHovered ? social.color : "#111827",
-        borderColor: isHovered ? social.color : "#374151",
-        boxShadow: isHovered ? `0 0 25px 0 rgba(${hexToRgb(social.color)}, 0.6)` : "0 0 0px 0 rgba(0, 0, 0, 0)",
-      }}
-      transition={{ duration: 0.3 }}
-    >
-      {/* Ripple effect on hover */}
-      {isHovered && (
-        <motion.div
-          className="absolute inset-0 rounded-xl"
-          style={{ backgroundColor: social.color }}
-          initial={{ scale: 0, opacity: 0.5 }}
-          animate={{ scale: 2, opacity: 0 }}
-          transition={{ duration: 0.6 }}
-        />
-      )}
-
+  <motion.a
+    href={social.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+    animate={{
+      opacity: isInView ? 1 : 0,
+      scale: isInView ? 1 : 0.8,
+      y: isInView ? 0 : 20,
+      backgroundColor: isHovered ? social.color : "#111827",
+      borderColor: isHovered ? social.color : "#374151",
+      boxShadow: isHovered
+        ? `0 0 25px 0 rgba(${hexToRgb(social.color)}, 0.6)`
+        : "0 0 0px 0 rgba(0, 0, 0, 0)",
+    }}
+    transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
+    className="w-14 h-14 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-blue-400 hover:text-white transition-all duration-300 relative overflow-hidden"
+    onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)}
+    whileHover={{
+      scale: 1.15,
+      rotate: [0, -10, 10, 0],
+      transition: { duration: 0.5 },
+    }}
+  >
+    {/* Ripple effect on hover */}
+    {isHovered && (
       <motion.div
-        animate={{
-          rotate: isHovered ? 360 : 0,
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        {social.icon}
-      </motion.div>
-    </motion.a>
-  )
+        className="absolute inset-0 rounded-xl"
+        style={{ backgroundColor: social.color }}
+        initial={{ scale: 0, opacity: 0.5 }}
+        animate={{ scale: 2, opacity: 0 }}
+        transition={{ duration: 0.6 }}
+      />
+    )}
+
+    <motion.div
+      animate={{
+        rotate: isHovered ? 360 : 0,
+      }}
+      transition={{ duration: 0.5 }}
+    >
+      {social.icon}
+    </motion.div>
+  </motion.a>
+);
+
 }
 
 // Helper function to convert hex color to RGB for box-shadow animation

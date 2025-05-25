@@ -1,9 +1,8 @@
-// lib/gsap.ts
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register only once
-if (typeof window !== "undefined" && !gsap.core.globals().ScrollTrigger) {
+// Register plugin only on the client
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
