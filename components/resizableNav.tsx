@@ -58,7 +58,7 @@ export default function ResizableNav() {
   }, []);
 
   return (
-    <div ref={navbarRef} className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+    <div ref={navbarRef} className="fixed top-0 left-0 right-0 z-[5000] bg-white shadow-md">
       <Navbar>
         {/* Desktop Navigation */}
         <NavBody>

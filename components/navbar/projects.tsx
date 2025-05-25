@@ -128,46 +128,52 @@ function ProjectCard({ project, index, isInView }: { project: Project; index: nu
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+     
       <ThreeDPin title={project.title} href={project.link}>
-        <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[20rem] h-[20rem] rounded-2xl border border-blue-900/30 bg-gray-950 shadow-lg transition-transform duration-300 hover:scale-[1.03] mx-auto">
-          {/* Project image */}
-          <div className="relative w-full h-40 rounded-lg overflow-hidden mb-4">
-            <img
-              src={project.image || "/placeholder.svg"}
-              alt={project.title}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-          {/* Title */}
-          <h3 className="font-bold text-base text-slate-100 mb-1">{project.title}</h3>
-          {/* Description */}
-          <p className="text-sm text-slate-400 mb-2 line-clamp-2">{project.description}</p>
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-2">
-            {project.tags.map((tag, i) => (
-              <span
-                key={i}
-                className="px-3 py-1 text-xs font-medium bg-blue-900/30 backdrop-blur-sm rounded-full text-blue-200"
-              >
-                {tag}
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full h-full"
+          tabIndex={-1}
+          style={{ textDecoration: "none" }}
+        >
+          <div className="flex flex-col p-4 tracking-tight text-slate-100/50 w-[20rem] h-[20rem] rounded-2xl border border-blue-900/30 bg-gray-950 shadow-lg transition-transform duration-300 hover:scale-[1.03] mx-auto">
+            {/* Project image */}
+            <div className="relative w-full h-40 rounded-lg overflow-hidden mb-4">
+              <img
+                src={project.image || "/placeholder.svg"}
+                alt={project.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            {/* Title */}
+            <h3 className="font-bold text-base text-slate-100 mb-1">{project.title}</h3>
+            {/* Description */}
+            <p className="text-sm text-slate-400 mb-2 line-clamp-2">{project.description}</p>
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-2">
+              {project.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 text-xs font-medium bg-blue-900/30 backdrop-blur-sm rounded-full text-blue-200"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            {/* View project button */}
+            {project.link && (
+              <span className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors duration-200 mt-auto">
+                View Project
+                <span className="inline-block transition-transform duration-200">→</span>
               </span>
-            ))}
+            )}
           </div>
-          {/* View project button */}
-          {project.link && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors duration-200 mt-auto"
-            >
-              View Project
-              <span className="inline-block transition-transform duration-200">→</span>
-            </a>
-          )}
-        </div>
+        </a>
       </ThreeDPin>
+
     </motion.div>
   )
 }
