@@ -173,7 +173,6 @@ function ProjectCard({ project, index, isInView }: { project: Project; index: nu
           </div>
         </a>
       </ThreeDPin>
-
     </motion.div>
   )
 }

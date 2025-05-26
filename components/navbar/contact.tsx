@@ -57,16 +57,22 @@ const socialLinks = [
     color: "#3B82F6",
   },
   {
-    icon: <Linkedin className="w-6 h-6" />,
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/sabbir-hossain",
-    color: "#2563EB",
+    icon: <Facebook className="w-6 h-6" />,
+    label: "Facebook",
+    href: "https://www.facebook.com/Sabbir141368",
+    color: "#1877F2",
   },
   {
-    icon: <Twitter className="w-6 h-6" />,
-    label: "Twitter",
-    href: "https://twitter.com/sabbir_hossain",
-    color: "#1D4ED8",
+    icon: <Instagram className="w-6 h-6" />,
+    label: "Instagram",
+    href: "https://www.instagram.com/s_sabbir_r/",
+    color: "#E1306C",
+  },
+  {
+    icon: <Linkedin className="w-6 h-6" />,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/md-sabbir55hossain/",
+    color: "#0A66C2",
   },
 ]
 
@@ -657,6 +663,7 @@ function FormField({
   )
 }
 
+
 function SocialLinks() {
   const socialRef = useRef(null)
   const isInView = useInView(socialRef, { once: true, amount: 0.5 })
@@ -682,20 +689,6 @@ function SocialLinks() {
       >
         Follow Me
       </motion.h3>
-        <div className="flex justify-center gap-4 mb-8">
-        <a href="https://github.com/sabbir5959" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-white">
-        <Github className="w-8 h-8" />
-        </a>
-        <a href="https://www.facebook.com/Sabbir141368" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-white">
-        <Facebook className="w-8 h-8" />
-        </a>
-        <a href="https://www.instagram.com/s_sabbir_r/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-white">
-        <Instagram className="w-8 h-8" />
-        </a>
-        <a href="https://www.linkedin.com/in/md-sabbir55hossain/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-white">
-        <Linkedin className="w-8 h-8" />
-        </a>      
-      </div>
       <div className="flex justify-center gap-6 relative z-10">
         {socialLinks.map((social, index) => (
           <SocialLink key={social.label} social={social} index={index} isInView={isInView} />
