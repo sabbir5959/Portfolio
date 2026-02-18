@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useRef, useEffect, useCallback, useMemo } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 
 const certificates = [
@@ -11,7 +11,7 @@ const certificates = [
     title: "MIST CYBERSECURITY CLUB",
     issuer: "Cyber Bangla",
     date: "April 2025",
-    image: "mistCyberSecurity.png?height=600&width=800",
+    image: "/mistCyberSecurity.png",
     credential: "VIOLENCE",
     skills: ["Reverse Engineering", "Web hacking", "Cryptography", "Digital Forensics"],
   },
@@ -20,7 +20,7 @@ const certificates = [
     title: "Phoenix Summit CTF Participation",
     issuer: "Red Team Village",
     date: "May 2025",
-    image: "phoenix.png?height=600&width=800",
+    image: "/phoenix.png",
     credential: "VIOLENCE",
     skills: ["Networking", "Artificial Intelligence (AI)"],
   },
@@ -29,7 +29,7 @@ const certificates = [
     title: "BCS Certifications",
     issuer: "Bangladesh Computer Society",
     date: "Feb 2025",
-    image: "BCS.png?height=600&width=800",
+    image: "/BCS.png",
     credential: "VIOLENCE",
     skills: ["Steganography", "Cryptography", "Networking"],
   },
@@ -38,7 +38,7 @@ const certificates = [
     title: "UAP Cyber Siege 2025",
     issuer: "University of Asia Pacific",
     date: "May 2025",
-    image: "UAP.png?height=600&width=800",
+    image: "/UAP.png",
     credential: "VIOLENCE",
     skills: ["Networking"],
   },
@@ -148,27 +148,18 @@ function CertificateCard({
       layoutId={`certificate-container-${certificate.id}`}
     >
       <div className="relative h-[300px] w-full overflow-hidden rounded-xl border border-blue-900/30 bg-gray-950">
-        {/* Simplified background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-blue-600/10 z-0" />
-
         {/* Certificate image with overlay */}
         <div className="absolute inset-0 z-10">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-950/50 to-gray-950 z-20" />
           <div className="h-full w-full">
             <img
-              src={certificate.image || "/placeholder.svg"}
+              src={certificate.image}
               alt={certificate.title}
               className="h-full w-full object-cover object-center transition-transform duration-300 ease-out"
               style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
-              loading="lazy"
             />
           </div>
         </div>
-
-        {/* Simplified animated border */}
-        {isHovered && (
-          <div className="absolute inset-0 z-20 rounded-xl border-2 border-blue-500/50 pointer-events-none" />
-        )}
 
         {/* Content container */}
         <div className="absolute inset-0 z-30 flex flex-col justify-end p-6">
@@ -202,16 +193,11 @@ function CertificateCard({
           {/* View certificate button */}
           <div className="mt-4 flex items-center justify-between">
             <span className="text-xs text-gray-400">Credential: {certificate.credential}</span>
-            <span
-              className={`text-sm font-medium text-blue-400 flex items-center gap-1 transition-transform duration-200 ${isHovered ? "translate-x-1" : ""}`}
-            >
+            <span className={`text-sm font-medium text-blue-400 flex items-center gap-1 transition-transform duration-200 ${isHovered ? "translate-x-1" : ""}`}>
               View <span className="inline-block">→</span>
             </span>
           </div>
         </div>
-
-        {/* Simplified glow effect on hover */}
-        {isHovered && <div className="absolute inset-0 rounded-xl pointer-events-none shadow-lg shadow-blue-500/25" />}
       </div>
     </motion.div>
   )
@@ -259,7 +245,7 @@ function CertificateModal({
         {/* Certificate image */}
         <div className="w-full md:w-1/2 h-60 md:h-auto relative">
           <img
-            src={certificate.image || "/placeholder.svg"}
+            src={certificate.image}
             alt={certificate.title}
             className="w-full h-full object-cover object-center"
           />
@@ -338,7 +324,7 @@ function CertificateModal({
           onClick={() => setShowFullImage(false)}
         >
           <img
-            src={certificate.image || "/placeholder.svg"}
+            src={certificate.image}
             alt={certificate.title}
             className="max-w-full max-h-full object-contain"
             loading="lazy"
