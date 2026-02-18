@@ -8,6 +8,7 @@ export default function About() {
           src="sabbirMain.png"
           alt="Md. Sabbir Hossain"
           className="w-52 h-52 md:w-120 md:mt-[-50] md:h-120 object-cover object-center"
+          loading="lazy"
         />
         <div className="flex flex-col mt-8 md:mt-14 mr-[-100] items-center md:items-start">
           <p className="text-lg md:text-2xl font-bold text-blue-600 dark:text-blue-300">I'm</p>

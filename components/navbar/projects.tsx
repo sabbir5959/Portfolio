@@ -52,9 +52,15 @@ export default function Projects() {
   }, [])
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove)
+    let animationFrameId: number
+    const handleMouseMoveOptimized = (e: MouseEvent) => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
+      animationFrameId = requestAnimationFrame(() => handleMouseMove(e))
+    }
+    window.addEventListener("mousemove", handleMouseMoveOptimized)
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("mousemove", handleMouseMoveOptimized)
+      if (animationFrameId) cancelAnimationFrame(animationFrameId)
     }
   }, [handleMouseMove])
 

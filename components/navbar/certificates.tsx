@@ -55,23 +55,24 @@ export default function Certificates() {
 
       {/* Reduced particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(5)].map((_, i) => (
+        {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 rounded-full bg-blue-500/30"
+            className="absolute w-1 h-1 rounded-full bg-blue-500/20"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
+              willChange: "transform, opacity",
             }}
             animate={{
-              y: [0, -100],
-              opacity: [0, 0.5, 0],
+              y: [0, -80],
+              opacity: [0, 0.3, 0],
               scale: [0, 1, 0.5],
             }}
             transition={{
-              duration: 8 + Math.random() * 10,
+              duration: 10 + Math.random() * 5,
               repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 5,
+              delay: Math.random() * 3,
             }}
           />
         ))}
@@ -155,8 +156,9 @@ function CertificateCard({
             <img
               src={certificate.image}
               alt={certificate.title}
-              className="h-full w-full object-cover object-center transition-transform duration-300 ease-out"
-              style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
+              className="h-full w-full object-cover object-center transition-transform duration-200 ease-out"
+              style={{ transform: isHovered ? "scale(1.05)" : "scale(1)", willChange: "transform" }}
+              loading="lazy"
             />
           </div>
         </div>

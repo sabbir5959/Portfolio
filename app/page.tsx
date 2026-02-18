@@ -38,7 +38,6 @@ export default function Home() {
           end: "bottom center",
           scrub: true,
           pin: false,
-          markers: true, // remove in production
         },
         backgroundColor: color,
         ease: "none",
