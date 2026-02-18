@@ -27,13 +27,13 @@ export default function RootLayout({
       <body
         className={`bg-gradient-to-b from-[#f0f0f0] to-[#ffffff] dark:from-[#1a1a1a] dark:to-[#000000] ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
         </ThemeProvider>
       </body>
     </html>
